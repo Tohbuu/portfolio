@@ -1,0 +1,340 @@
+/** Animate CSS **/
+@import '../../node_modules/animate.css/animate.css';
+
+/* Default Theme CSS */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/** Background Animation FX **/
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animation-bg-spin {
+    animation: spin 60s linear infinite;
+}
+
+.animate-opacity {
+    animation: animateOpacity 2s ease-in;
+}
+
+@keyframes animateOpacity {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes moveDotsLeft {
+    0% {
+        background-position: 0% 0%;
+    }
+
+    100% {
+        background-position: 100% 0%;
+    }
+}
+
+.bg-dots {
+    background-image: radial-gradient(circle, #d1d5db 1px, transparent 1px);
+    background-size: 20px 20px;
+    animation: moveDotsLeft 60s linear infinite;
+}
+
+.dark .bg-dots {
+    background-image: radial-gradient(circle, #4b5563 1px, transparent 1px);
+    background-size: 20px 20px;
+}
+
+/** Rocket Animation **/
+.rocket {
+    font-size: 42px;
+    margin-top: -50px;
+    animation: float 4s ease-in-out infinite;
+    position: relative;
+    right: 10px;
+    z-index: 2;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+
+@keyframes float {
+    0% {
+        transform: translateY(0) rotate(0deg);
+    }
+
+    50% {
+        transform: translateY(-30px) rotate(2deg);
+    }
+
+    100% {
+        transform: translateY(0) rotate(0deg);
+    }
+}
+
+@keyframes flicker {
+    0% {
+        opacity: 0.7;
+        transform: translateX(-50%) rotate(180deg) scale(0.9);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateX(-50%) rotate(180deg) scale(1.1);
+    }
+}
+
+/** Main App **/
+
+@layer base {
+    html {
+        font-family: system-ui, sans-serif;
+    }
+
+    /** Default Theme **/
+    body {
+        @apply overflow-x-hidden antialiased scroll-smooth bg-white text-secondary-900 dark:bg-secondary-950 dark:text-secondary-300
+    }
+
+    .section-filled {
+        @apply bg-secondary-50 dark:bg-black;
+    }
+
+    /** Saturn UI **/
+    .saturn-ui,
+    .saturn-ui-primary {
+        @apply bg-black text-white dark:bg-white dark:text-black;
+    }
+
+    /** Highlighted text **/
+    .text-gradient,
+    .tg {
+        @apply bg-gradient-to-b from-secondary-100 to-secondary-300 bg-clip-text pr-1 text-transparent dark:from-secondary-200 dark:to-secondary-600;
+    }
+
+    .text-highlight,
+    .heading-module-title strong {
+        @apply bg-gradient-to-r from-primary-500 to-tertiary-500 bg-clip-text pr-1 text-transparent;
+    }
+
+    /** Modules **/
+    .heading-module-title {
+        @apply font-bold text-4xl tracking-tighter bg-gradient-to-b from-secondary-400 to-secondary-950 bg-clip-text leading-none text-transparent dark:from-secondary-300 dark:to-secondary-600;
+    }
+
+    .heading-module-subtitle {
+        @apply text-base;
+    }
+
+    /** About Section **/
+    .about-you-section p {
+        @apply pt-4;
+    }
+
+    /** Hero Section **/
+    .hero-section-title {
+        @apply mb-8 text-center text-4xl font-bold leading-none tracking-tighter lg:text-5xl;
+    }
+
+    .hero-section-featured-border {
+        @apply p-2 mx-auto bg-white/20 dark:bg-white/20 rounded-xl shadow-xl border border-black/10 dark:border-white/10;
+    }
+
+    .hero-bg-overlay-default {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/80 dark:to-black/60 transition-all duration-300 from-white/100 via-white/70 to-white/60;
+    }
+
+    .hero-bg-overlay-middle {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/40 dark:to-black/20 transition-all duration-300 from-white/100 via-white/40 to-white/20;
+    }
+
+      .hero-bg-overlay-down {
+        @apply bg-gradient-to-t dark:from-secondary-950 dark:via-black/0 dark:to-black/0 transition-all duration-300 from-white/100 via-white/0 to-white/0;
+    }
+
+    .hero-title {
+        @apply font-bold text-4xl tracking-tighter leading-none;
+    }
+
+    .hero-subtitle {
+        @apply text-base;
+    }
+
+    /** Default Gradient **/
+
+    .tl {
+        @apply bg-gradient-to-r from-primary-500 to-tertiary-500 bg-clip-text pr-1 text-transparent;
+    }
+
+    .dg {
+        @apply dark:bg-gradient-to-tr dark:from-secondary-400 dark:to-secondary-600 bg-gradient-to-tr from-secondary-400 to-secondary-700 bg-clip-text text-transparent;
+    }
+
+    .ht {
+        @apply bg-gradient-to-t from-secondary-400 text-transparent to-secondary-950 dark:from-secondary-300 dark:to-secondary-800 bg-clip-text;
+    }
+
+    /** Module Header **/
+
+    .header-title,
+    .module-title {
+        @apply text-2xl leading-none tracking-tight font-bold;
+    }
+
+    .subtitle,
+    .module-subtitle {
+        @apply text-center text-sm md:text-base mx-auto;
+    }
+
+    /** Form Input **/
+    .fi-input-wrp {
+        @apply relative mb-1;
+    }
+
+    /** Change placeholder form color **/
+    .fi-input-wrp input::placeholder {
+        @apply text-secondary-500 transition-all duration-75 focus:text-xs focus:font-normal;
+    }
+
+    /** Form Input Height Size **/
+    .fi-input-wrp input {
+        @apply h-10;
+    }
+
+    /** Form Input Label **/
+    .fi-input-label {
+        @apply absolute left-0 top-0 text-sm font-semibold text-secondary-400;
+        transform: translateY(-50%);
+    }
+
+    /** Form Input Error **/
+    .fi-input-error {
+        @apply text-sm font-semibold text-red-600;
+    }
+
+    /** Project Content **/
+    .project-content img {
+        @apply my-4 rounded-lg shadow-lg;
+    }
+
+    .project-content figure {
+        @apply flex flex-col items-center;
+    }
+
+    .project-content figcaption {
+        @apply mb-4 text-center text-sm text-secondary-500;
+    }
+
+    .project-content p {
+        @apply my-8;
+    }
+
+    /** Maintenance Section Content  **/
+    #maintenance-content h2 {
+        @apply my-2 text-3xl font-semibold tracking-tight;
+    }
+
+    #maintenance-content h3 {
+        @apply my-2 text-2xl font-semibold;
+    }
+
+    #maintenance-content p {
+        @apply leading-tight
+    }
+
+    /** Components **/
+    .cta-one img {
+        @apply rounded-lg;
+    }
+
+    /** Alerts **/
+
+    .modal-alert figcaption {
+        @apply hidden;
+    }
+
+    .modal-alert img {
+        @apply mx-auto rounded-lg py-8;
+    }
+
+    .alert-content h2 {
+        @apply block text-xl font-bold;
+    }
+
+    .alert-content p {
+        @apply block;
+    }
+
+    .alert-content strong {
+        @apply font-semibold;
+    }
+
+    .alert-content strong em {
+        @apply font-semibold;
+    }
+
+    /** UI Components: Tag, Notification Tag**/
+    .tag {
+        @apply bg-primary-600 animate-pulse uppercase font-mono text-xs px-1 font-semibold text-white;
+    }
+
+    .notify {
+        @apply bg-primary-500 animate-ping lowercase w-1 h-1 absolute float-end -mt-1 rounded-full;
+
+    }
+
+    /** Global Settings  **/
+
+    trix-editor {
+        @apply text-left;
+    }
+
+    .content p {
+        @apply pt-6;
+    }
+
+    .content img {
+        @apply rounded-lg my-4;
+    }
+
+    figcaption {
+        @apply hidden;
+        /** this affects the figcaption in the trix editor **/
+    }
+
+    .attachment__caption {
+        @apply hidden;
+    }
+
+    /** Heading Description **/
+
+    #heading-description-content p {
+        @apply my-4;
+    }
+
+    /** Project Modal **/
+    /* .project-modal img {
+        @apply rounded-lg mx-auto;
+    } */
+
+    .project-modal figure {
+        @apply -mx-6 md:-mx-12 lg:-mx-24 flex justify-center my-8;
+    }
+
+    /** Forms Inputs Borders **/
+    .fi-input-wrp {
+        @apply border border-secondary-500/50;
+    }
+
+}
